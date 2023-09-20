@@ -8,6 +8,7 @@
     class="form-range"
     min="-2"
     max="18"
+    [value]="zoom"
     >
 
     <button class=" btn btn-success"> + </button>
@@ -16,7 +17,7 @@
 
 
   <span>
-    Zoom: {{10.213}}
+    Zoom: {{zoom | number: '2.2-2'}}
     <br>
     Lng, Lat
   </span>
