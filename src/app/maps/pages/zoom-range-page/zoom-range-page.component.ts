@@ -31,12 +31,34 @@ export class ZoomRangePageComponent implements AfterViewInit {
     }
 
     mapListeners(){
+      // Listener del zoom
       if (!this.map) throw 'Mapa no inicializado';
       this.map.on('zoom', (ev) => {
         // actualizar el zoom cada vez que cambie
         this.zoom =  this.map!.getZoom();
 
       });
+
+      // Listener para maximo de zoom
+      this.map.on('zoomend', (ev) => {
+        if(this.map!.getZoom() < 18 ) return;
+        this.map!.zoomTo(18);
+
+      });
+
+    }
+
+    zoomIn(){
+      this.map?.zoomIn();
+    }
+
+    zoomOut(){
+      this.map?.zoomOut();
+    }
+
+    zoomChangeBarra(value:string){
+      this.zoom = Number(value);
+      this.map?.zoomTo(this.zoom)
     }
 
 }
