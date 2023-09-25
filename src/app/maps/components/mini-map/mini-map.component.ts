@@ -22,14 +22,12 @@ export class MiniMapComponent implements AfterViewInit {
       style: 'mapbox://styles/mapbox/streets-v12', // style URL
       center: this.lngLat, // starting position [lng, lat]
       zoom: 15, // starting zoom
-      interactive: false,
+      // interactive: false,
       });
 
       new Marker ()
         .setLngLat(this.lngLat)
         .addTo(map)
   }
-
-
 
 }
