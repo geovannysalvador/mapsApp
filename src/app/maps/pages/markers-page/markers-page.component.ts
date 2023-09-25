@@ -6,6 +6,12 @@ interface MarkerAndColor{
   marker: Marker;
 }
 
+interface SaveMarkerLS{
+  color: string,
+  lngLat: number[];
+
+}
+
 @Component({
   selector: 'markers-page',
   templateUrl: './markers-page.component.html',
@@ -34,6 +40,8 @@ export class MarkersPageComponent implements AfterViewInit {
         center: this.ActualLngLat, // starting position [lng, lat]
         zoom: this.zoom, // starting zoom
         });
+
+        this.readLocalStorage();
 
         // // Modificar el elemento html del marcador
         // const markerHtml =  document.createElement('div');
@@ -75,6 +83,7 @@ export class MarkersPageComponent implements AfterViewInit {
       color: color,
       marker: marker,
     });
+    this.saveLocalStorage();
   }
 
   deleteMarker(index:number){
@@ -86,6 +95,29 @@ export class MarkersPageComponent implements AfterViewInit {
     this.map?.flyTo({
       zoom: 15,
       center: marker.getLngLat(),
+    })
+  }
+
+  saveLocalStorage(){
+    const saveMarkersLS:SaveMarkerLS[] = this.markers.map(({color, marker}) =>{
+      return{
+        color,
+        lngLat: marker.getLngLat().toArray()
+      }
+    });
+    localStorage.setItem('saveMarkersLS', JSON.stringify(saveMarkersLS));
+
+  }
+
+  readLocalStorage(){
+    const saveMarkersLSString =  localStorage.getItem('saveMarkersLS') ?? '[]';
+    const saveMarkersLS: SaveMarkerLS[] = JSON.parse(saveMarkersLSString); //!
+
+    saveMarkersLS.forEach(({color, lngLat}) =>{
+      const [lng, lat] = lngLat;
+      const coords = new LngLat(lng, lat)
+
+      this.addMarker(coords, color)
     })
   }
 
