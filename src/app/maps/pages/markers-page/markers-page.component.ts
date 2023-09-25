@@ -16,6 +16,8 @@ export class MarkersPageComponent implements AfterViewInit {
     // referencia a algun elemento html basado en map del html
     @ViewChild('map') divMap?: ElementRef;
 
+    public markers:Marker[] = [];
+
     // Muestra o rederiza el mapa en si.
     ngAfterViewInit(): void {
       if (!this.divMap) throw 'Elemento HTML no encontrado'
@@ -47,7 +49,7 @@ export class MarkersPageComponent implements AfterViewInit {
 
     // const color = '#xxxxxx'.replace(/x/g, y=>(Math.random()*16|0).toString(16));
     // const color = '#' + Array.from({ length: 3 }, () => (Math.random() * 200 + 55 | 0).toString(16)).join('');
-    const colorsList = ['#FF5733', '#FFBD33', '#33FF57', '#33A4FF', '#D233FF', '#FF33B5', '#00FF00', '#FF0000', '#A52A2A', '#00FFFF']; // Lista de colores comunes
+    const colorsList = ['#fefae0', '#faedcd', '#e9edc9', '#d5bdaf', '#e3d5ca', '#f5ebe0', '#edede9', '#fefae0', '#a8dadc', '#fcd5ce']; // Lista de colores comunes
     const color = colorsList[Math.floor(Math.random() * colorsList.length)];
     const lngLat = this.map.getCenter();
 
@@ -64,7 +66,7 @@ export class MarkersPageComponent implements AfterViewInit {
     .setLngLat(lngLat)
     .addTo(this.map)
 
-
+    this.markers.push(marker);
   }
 
 }
