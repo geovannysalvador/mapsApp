@@ -3,6 +3,7 @@
 <ul class="list-group">
   <div *ngFor="let ColorYMarcador of markers; let i = index"
         [ngStyle]="{backgroundColor:ColorYMarcador.color}"
+        (dblclick)="deleteMarker(i)"
         class="list-group-item"
         >
     Marker: {{i + 1}}

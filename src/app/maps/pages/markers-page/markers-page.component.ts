@@ -77,4 +77,9 @@ export class MarkersPageComponent implements AfterViewInit {
     });
   }
 
+  deleteMarker(index:number){
+    this.markers[index].marker.remove();
+    this.markers.splice(index, 1);
+  }
+
 }
