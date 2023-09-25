@@ -13,9 +13,9 @@ interface MenuItem{
 export class SideMenuComponent {
 
   public menuItem: MenuItem[] = [
-    {route: '/maps/fullscreen', name: 'FullS creen'},
-    {route: '/maps/zoom-range', name: 'Zoom Range'},
-    {route: '/maps/markers', name: 'Markers'},
-    {route: '/maps/properties', name: 'Houses'},
+    {route: '/maps/fullscreen', name: 'Pantalla General'},
+    {route: '/maps/zoom-range', name: 'Navegar por Zoom'},
+    {route: '/maps/markers', name: 'Marcadores'},
+    {route: '/maps/properties', name: 'Propiedades'},
   ]
 }

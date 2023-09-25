@@ -7,21 +7,21 @@
 </div>
 
 
-<div class="row mt-2">
+<div class="row mt-3" >
   <div class="col-2"></div>
     <div class="col">
 
       <div class="row">
 
         <!-- casas -->
-        <div *ngFor="let house of houses" class="col-4 mb-2">
+        <div *ngFor="let house of houses" class="col-4 mb-4">
 
           <div class="card">
             <!-- <img src="..." alt="" class="card-img-top"> -->
             <mini-map [lngLat]="house.lngLat"></mini-map>
             <div class="card-body">
               <h5 class="card-title">{{house.title}}</h5>
-              <p class="card-text">{{house.description}}</p>
+              <p class="card-text" id="textLimit">{{house.shortDescription}}</p>
             </div>
           </div>
 
