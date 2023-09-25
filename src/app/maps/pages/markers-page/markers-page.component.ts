@@ -62,7 +62,7 @@ export class MarkersPageComponent implements AfterViewInit {
 
     // const color = '#xxxxxx'.replace(/x/g, y=>(Math.random()*16|0).toString(16));
     // const color = '#' + Array.from({ length: 3 }, () => (Math.random() * 200 + 55 | 0).toString(16)).join('');
-    const colorsList = ['#dda15e', '#fefae0', '#e3d5ca', '#a7c957', '#83c5be', '#f5cac3', '#e7c6ff', '#f7af9d', '#fcca46', '#dbd3d8']; // Lista de colores comunes
+    const colorsList = ['#dda15e', '#e3d5ca', '#a7c957', '#83c5be', '#f5cac3', '#e7c6ff', '#f7af9d', '#fcca46', '#dbd3d8']; // Lista de colores comunes
     const color = colorsList[Math.floor(Math.random() * colorsList.length)];
     const lngLat = this.map.getCenter();
 
@@ -84,6 +84,10 @@ export class MarkersPageComponent implements AfterViewInit {
       marker: marker,
     });
     this.saveLocalStorage();
+
+    //dragend, dragstart. drag
+    marker.on('dragend', () => this.saveLocalStorage() )
+
   }
 
   deleteMarker(index:number){
