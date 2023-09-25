@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CounterAloneComponent } from '../../components/counter-alone/counter-alone.component';
+import { SideMenuComponent } from '../../components/side-menu/side-menu.component';
 // import { CommonModule } from '@angular/common';
 
 @Component({
@@ -7,7 +8,7 @@ import { CounterAloneComponent } from '../../components/counter-alone/counter-al
   standalone: true,
   //imports: [CommonModule], //! no es necesario pero puede ir si usamos los ng-if o for etc
   // para usar con standalone y llamarlo en el HTML se debe de importar aca
-  imports: [CounterAloneComponent, ],
+  imports: [CounterAloneComponent, SideMenuComponent],
   templateUrl: './alone-page.component.html',
   styleUrls: ['./alone-page.component.css']
 })
