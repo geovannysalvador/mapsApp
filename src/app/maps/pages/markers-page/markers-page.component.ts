@@ -1,6 +1,11 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import {LngLat, Map, Marker} from 'mapbox-gl'; // or "const mapboxgl = require('mapbox-gl');"
 
+interface MarkerAndColor{
+  color: string;
+  marker: Marker;
+}
+
 @Component({
   selector: 'markers-page',
   templateUrl: './markers-page.component.html',
@@ -16,7 +21,7 @@ export class MarkersPageComponent implements AfterViewInit {
     // referencia a algun elemento html basado en map del html
     @ViewChild('map') divMap?: ElementRef;
 
-    public markers:Marker[] = [];
+    public markers:MarkerAndColor[] = [];
 
     // Muestra o rederiza el mapa en si.
     ngAfterViewInit(): void {
@@ -49,7 +54,7 @@ export class MarkersPageComponent implements AfterViewInit {
 
     // const color = '#xxxxxx'.replace(/x/g, y=>(Math.random()*16|0).toString(16));
     // const color = '#' + Array.from({ length: 3 }, () => (Math.random() * 200 + 55 | 0).toString(16)).join('');
-    const colorsList = ['#fefae0', '#faedcd', '#e9edc9', '#d5bdaf', '#e3d5ca', '#f5ebe0', '#edede9', '#fefae0', '#a8dadc', '#fcd5ce']; // Lista de colores comunes
+    const colorsList = ['#dda15e', '#fefae0', '#e3d5ca', '#a7c957', '#83c5be', '#f5cac3', '#e7c6ff', '#f7af9d', '#fcca46', '#dbd3d8']; // Lista de colores comunes
     const color = colorsList[Math.floor(Math.random() * colorsList.length)];
     const lngLat = this.map.getCenter();
 
@@ -66,7 +71,10 @@ export class MarkersPageComponent implements AfterViewInit {
     .setLngLat(lngLat)
     .addTo(this.map)
 
-    this.markers.push(marker);
+    this.markers.push({
+      color: color,
+      marker: marker,
+    });
   }
 
 }

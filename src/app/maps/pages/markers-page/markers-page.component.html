@@ -1,7 +1,10 @@
 <div id="map" #map></div>
 
 <ul class="list-group">
-  <div *ngFor="let marcador of markers; let i = index" class="list-group-item">
+  <div *ngFor="let ColorYMarcador of markers; let i = index"
+        [ngStyle]="{backgroundColor:ColorYMarcador.color}"
+        class="list-group-item"
+        >
     Marker: {{i + 1}}
   </div>
 </ul>
